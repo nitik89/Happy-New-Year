@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      position: relative;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: #e74c3c;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation: confetti-fall 1s linear infinite;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Happy New Year!</h1>
+  <p>Wishing you a year filled with joy, success, and amazing moments.</p>
+  <button onclick="celebrate()">Celebrate!</button>
+</div>
+
+<script>
+  function celebrate() {
+    // Create a new confetti element
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    
+    // Apply a random color to each confetti
+    confetti.style.backgroundColor = getRandomColor();
+    
+    // Apply a random shape to each confetti
+    confetti.style.clipPath = getRandomShape();
+    
+    // Set a random position for each confetti
+    confetti.style.left = `${Math.random() * 100}vw`;
+    
+    // Append the confetti to the body
+    document.body.appendChild(confetti);
+    
+    // After a delay, remove the confetti element
+    setTimeout(() => {
+      confetti.remove();
+    }, 2000); // Adjust the duration as needed
+  }
+
+  function getRandomColor() {
+    const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#e67e22'];
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  function getRandomShape() {
+    const shapes = ['polygon(50% 0%, 0% 100%, 100% 100%)', 'circle()', 'ellipse(50% 50%)'];
+    return shapes[Math.floor(Math.random() * shapes.length)];
+  }
+</script>
+
+</body>
+</html>
